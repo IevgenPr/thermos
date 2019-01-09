@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% from "form_macros.html" import render_field %}
+
+{% block title %}
+Thermos  -- Bookmarks tagged {{ tag }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <header><h1>Bookmarks tagged {{ tag }}</h1></header>
+
+        {% if tag.bookmarks.count() > 0 %}
+            {% with bookmarks=tag.bookmarks %}
+                {% include "bookmark_list.html" %}
+            {% endwith %}
+        {% else %}
+            There are no bookmarks for this tag.
+        {% endif %}
+
+    </article>
+{% endblock %}
+
+
